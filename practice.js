@@ -99,6 +99,38 @@ class LinkedList {
   }
 }
 
+class _Node {
+  constructor(value, next) {
+    this.value = value;
+    this.next = next;
+  }
+}
+
+//1 Done in the reading and lecture
+
+//2
+function main() {
+  let SLL = new LinkedList();
+  //Apollo, Boomer, Helo, Husker, Starbuck
+
+  SLL.insertFirst("Apollo");
+  SLL.insertLast("Boomer");
+  SLL.insertLast("Helo");
+  SLL.insertLast("Husker");
+  SLL.insertLast("Starbuck");
+  SLL.insertLast("Tauhida");
+  SLL.remove("squirrel");
+  SLL.insertBefore("Athena", "Boomer");
+  SLL.insertAfter("Hotdog", "Helo");
+  SLL.insertAt("Kat", 3);
+  SLL.remove("Tauhida");
+
+  return findLast(SLL);
+}
+
+console.log(main());
+
+//3
 function display(ll) {
   let temp = ll.head;
   while (temp.next !== null) {
@@ -139,34 +171,3 @@ function findLast(ll) {
   }
   return temp;
 }
-
-class _Node {
-  constructor(value, next) {
-    this.value = value;
-    this.next = next;
-  }
-}
-
-//1 Done in the reading and lecture
-
-//2
-function main() {
-  let SLL = new LinkedList();
-  //Apollo, Boomer, Helo, Husker, Starbuck
-
-  SLL.insertFirst("Apollo");
-  SLL.insertLast("Boomer");
-  SLL.insertLast("Helo");
-  SLL.insertLast("Husker");
-  SLL.insertLast("Starbuck");
-  SLL.insertLast("Tauhida");
-  SLL.remove("squirrel");
-  SLL.insertBefore("Athena", "Boomer");
-  SLL.insertAfter("Hotdog", "Helo");
-  SLL.insertAt("Kat", 3);
-  SLL.remove("Tauhida");
-
-  return findLast(SLL);
-}
-
-console.log(main());
