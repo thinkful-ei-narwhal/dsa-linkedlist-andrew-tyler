@@ -97,13 +97,39 @@ class LinkedList {
     }
     previousNode.next = currNode.next;
   }
-  findAll() {
-    let temp = this.head;
-    while (temp.next !== null) {
-      temp = temp.next;
-      console.log(temp);
-    }
+}
+
+function display(ll) {
+  let temp = ll.head;
+  while (temp.next !== null) {
+    temp = temp.next;
+    console.log(temp);
   }
+}
+
+function size(ll) {
+  let temp = ll.head;
+  let count = 0;
+  while (temp !== null) {
+    temp = temp.next;
+    count++;
+  }
+  return count;
+}
+
+function isEmpty(ll) {
+  if (ll.head === null) {
+    return "LinkedList is empty";
+  }
+  return "LinkedList is NOT empty";
+}
+
+function findPrevious(ll, search) {
+  let temp = ll.head;
+  while (temp.next !== search) {
+    temp = temp.next;
+  }
+  return temp;
 }
 
 class _Node {
@@ -132,7 +158,7 @@ function main() {
   SLL.insertAt("Kat", 3);
   SLL.remove("Tauhida");
 
-  return SLL.findAll();
+  return findPrevious(SLL, "Hotdog");
 }
 
 console.log(main());
