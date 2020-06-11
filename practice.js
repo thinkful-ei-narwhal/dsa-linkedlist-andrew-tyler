@@ -126,7 +126,15 @@ function isEmpty(ll) {
 
 function findPrevious(ll, search) {
   let temp = ll.head;
-  while (temp.next !== search) {
+  while (temp.next.value !== search) {
+    temp = temp.next;
+  }
+  return temp;
+}
+
+function findLast(ll) {
+  let temp = ll.head;
+  while (temp.next !== null) {
     temp = temp.next;
   }
   return temp;
@@ -158,7 +166,7 @@ function main() {
   SLL.insertAt("Kat", 3);
   SLL.remove("Tauhida");
 
-  return findPrevious(SLL, "Hotdog");
+  return findLast(SLL);
 }
 
 console.log(main());
