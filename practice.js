@@ -140,6 +140,58 @@ function findLast(ll) {
   return temp;
 }
 
+function reverse(ll) {
+  if (ll.head === null) {
+    return;
+  }
+
+  let previous = null;
+  let curr = ll.head;
+  let nextNode = ll.head.next;
+
+  while (curr.next !== null) {
+    curr.next = previous;
+
+    previous = curr;
+    curr = nextNode;
+    nextNode = curr.next;
+    // console.log('line 158', previous);
+    // console.log('line 159', ll);
+  }
+
+  ll.head = curr;
+
+  return ll;
+
+}
+
+function thirdFromEnd(ll) {
+  let temp = ll.head;
+  while (temp.next.next.next !== null) {
+    temp = temp.next;
+  }
+  return temp;
+}
+
+function findMiddle(ll) {
+  // If the list is empty
+  if (!ll.head) {
+    return null;
+  }
+
+  let slow = ll.head;
+  let fast = ll.head.next;
+
+  while (fast && fast.next) {
+    slow = slow.next;
+    fast = fast.next.next;
+  }
+  return slow;
+
+}
+
+
+
 class _Node {
   constructor(value, next) {
     this.value = value;
@@ -160,13 +212,17 @@ function main() {
   SLL.insertLast("Husker");
   SLL.insertLast("Starbuck");
   SLL.insertLast("Tauhida");
-  SLL.remove("squirrel");
-  SLL.insertBefore("Athena", "Boomer");
-  SLL.insertAfter("Hotdog", "Helo");
-  SLL.insertAt("Kat", 3);
-  SLL.remove("Tauhida");
+  // SLL.remove("squirrel");
+  // SLL.insertBefore("Athena", "Boomer");
+  // SLL.insertAfter("Hotdog", "Helo");
+  // SLL.insertAt("Kat", 3);
+  // SLL.remove("Tauhida");
 
-  return findLast(SLL);
+  return findMiddle(SLL);
+
 }
 
 console.log(main());
+
+
+// 4 This function is removing duplicates from the linked list. This is Linear Time?
