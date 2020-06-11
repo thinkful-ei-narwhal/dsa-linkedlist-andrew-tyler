@@ -22,6 +22,36 @@ class LinkedList {
       tempNode.next = new _Node(item, null);
     }
   }
+
+  insertBefore(value, search) {
+    //inserts a new node BEFORE a given node
+    let temp = this.head;
+    while (temp.next.value !== search) {
+      temp = temp.next;
+    }
+    temp.next = new _Node(value, temp.next);
+  }
+
+  insertAfter(value, search) {
+    //inserts an item at a specific position in the linked list
+    let temp = this.head;
+    while (temp.value !== search) {
+      temp = temp.next;
+    }
+    temp.next = new _Node(value, temp.next);
+  }
+
+  insertAt(value, position) {
+    let temp = this.head;
+    let count = 0;
+
+    while (temp.value !== null && count < position - 1) {
+      temp = temp.next;
+      count++;
+    }
+    temp.next = new _Node(value, temp.next);
+  }
+
   find(item) {
     //start at the head
     let currNode = this.head;
@@ -67,6 +97,13 @@ class LinkedList {
     }
     previousNode.next = currNode.next;
   }
+  findAll() {
+    let temp = this.head;
+    while (temp.next !== null) {
+      temp = temp.next;
+      console.log(temp);
+    }
+  }
 }
 
 class _Node {
@@ -75,3 +112,27 @@ class _Node {
     this.next = next;
   }
 }
+
+//1 Done in the reading and lecture
+
+//2
+function main() {
+  let SLL = new LinkedList();
+  //Apollo, Boomer, Helo, Husker, Starbuck
+
+  SLL.insertFirst("Apollo");
+  SLL.insertLast("Boomer");
+  SLL.insertLast("Helo");
+  SLL.insertLast("Husker");
+  SLL.insertLast("Starbuck");
+  SLL.insertLast("Tauhida");
+  SLL.remove("squirrel");
+  SLL.insertBefore("Athena", "Boomer");
+  SLL.insertAfter("Hotdog", "Helo");
+  SLL.insertAt("Kat", 3);
+  SLL.remove("Tauhida");
+
+  return SLL.findAll();
+}
+
+console.log(main());
